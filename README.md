@@ -37,19 +37,20 @@ A API limita consultas de séries diárias a janelas de no máximo 10 anos, ent�
 - Python
 - pandas
 - requests
-- Jupyter Notebook *(etapa de análise)*
+- matplotlib
+- Jupyter Notebook
 
 ## ▶️ Como executar
 
 ```bash
 # instalar as dependências
-pip install requests pandas
+pip install -r requirements.txt
 
 # coletar os dados
 python coleta.py
 ```
 
-O resultado é salvo em `data/cotacoes.csv`.
+O resultado é salvo em `data/cotacoes.csv`. Depois, abra o `analise.ipynb` no Jupyter ou no VS Code e execute todas as células.
 
 ## 📁 Estrutura do projeto
 
@@ -58,26 +59,27 @@ analise-cambio/
 ├── coleta.py          # coleta das cotações na API do Banco Central
 ├── data/
 │   └── cotacoes.csv   # dados coletados
-├── analise.ipynb      # análise exploratória (em construção)
+├── analise.ipynb      # análise exploratória e conclusões
+├── requirements.txt   # dependências do projeto
 └── README.md
 ```
 
 ## 🚧 Status
 
 - [x] Coleta automatizada dos dados via API
-- [ ] Limpeza e tratamento
-- [ ] Análise exploratória
-- [ ] Visualizações
-- [ ] Dashboard
-- [ ] Conclusões
+- [x] Limpeza e tratamento
+- [x] Análise exploratória
+- [x] Visualizações
+- [x] Conclusões
+- [ ] Dashboard interativo *(próxima etapa)*
 
 ## 💡 Principais conclusões
 
-*Em breve.*
+Entre 2015 e 2026, o Real perdeu valor frente a todas as moedas analisadas, com o dólar dobrando de preço. A instabilidade do câmbio se concentrou em momentos de crise, como 2015 e a pandemia de 2020, quando o dólar subiu 32% em menos de três meses. Já a ideia de que existe um “mês certo” para comprar dólar não se sustenta: a aparente sazonalidade é explicada por poucos anos atípicos. Durante o projeto, a validação dos dados também mostrou que uma das séries inicialmente usadas não correspondia ao peso argentino, e ela foi retirada da análise.
 
 ## 👤 Autor
 
 **Deivid Azevedo Dantas**
 Estudante de Análise e Desenvolvimento de Sistemas no Centro Universitário FMU
 
-[LinkedIn](LINK_DO_LINKEDIN) · [Portfólio](LINK_DO_PORTFOLIO)
+[LinkedIn](https://www.linkedin.com/in/deivid-azevedo-4b5709344/)
