@@ -1,6 +1,6 @@
 # 📈 Análise de Câmbio: o Real frente a outras moedas (2015–2026)
 
-Projeto de análise de dados que coleta, trata e analisa o histórico de cotações do Real brasileiro em relação a cinco moedas, usando dados oficiais do **Banco Central do Brasil**.
+Projeto de análise de dados que coleta, trata e analisa o histórico de cotações do Real brasileiro em relação a quatro moedas, usando dados oficiais do **Banco Central do Brasil**.
 
 > Projeto complementar ao [Banco Multimoedas](https://github.com/deividazevedo292-coder/banco-multimoedas), meu sistema de conversão de moedas em Python. Lá eu converto valores; aqui eu analiso como essas moedas se comportaram ao longo dos anos.
 
@@ -23,13 +23,12 @@ Entender o comportamento do câmbio no Brasil nos últimos dez anos e responder 
 | Euro | EUR | 21619 |
 | Libra esterlina | GBP | 21623 |
 | Iene japonês | JPY | 21621 |
-| Peso argentino | ARS | 21637 |
 
 - **Fonte:** API pública do SGS (Sistema Gerenciador de Séries Temporais) do Banco Central
 - **Período:** janeiro de 2015 até a data da coleta
 - **Frequência:** diária (dias úteis)
 - **Valor:** cotação de venda, em reais
-- **Observação:** a série do peso argentino no Banco Central tem dados apenas até 01/08/2026; as análises dessa moeda consideram o período disponível.
+- **Observação:** o peso argentino chegou a ser incluído, mas a validação dos dados mostrou que a série usada (21637) não era a cotação diária da moeda, e sim um indicador mensal. Por isso ele foi retirado da análise.
 
 A API limita consultas de séries diárias a janelas de no máximo 10 anos, então o script de coleta busca os dados em blocos de 3 anos e junta tudo ao final.
 

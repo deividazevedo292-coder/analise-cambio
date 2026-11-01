@@ -22,7 +22,6 @@ SERIES = {
     "EUR": 21619,   # Euro
     "GBP": 21623,   # Libra esterlina
     "JPY": 21621,   # Iene japonês
-    "ARS": 21637,   # Peso argentino
 }
 
 DATA_INICIO = date(2015, 1, 1)
