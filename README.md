@@ -6,6 +6,10 @@ Projeto de análise de dados que coleta, trata e analisa o histórico de cotaç�
 
 ---
 
+## 📊 Dashboard
+
+O projeto tem um dashboard interativo em Streamlit, com filtros por moeda e período, indicadores, gráficos de evolução, volatilidade, pandemia e sazonalidade, e um conversor com a última cotação.
+
 ## 🎯 Objetivo
 
 Entender o comportamento do câmbio no Brasil nos últimos dez anos e responder perguntas como:
@@ -38,6 +42,7 @@ A API limita consultas de séries diárias a janelas de no máximo 10 anos, ent�
 - pandas
 - requests
 - matplotlib
+- Streamlit
 - Jupyter Notebook
 
 ## ▶️ Como executar
@@ -50,7 +55,13 @@ pip install -r requirements.txt
 python coleta.py
 ```
 
-O resultado é salvo em `data/cotacoes.csv`. Depois, abra o `analise.ipynb` no Jupyter ou no VS Code e execute todas as células.
+O resultado é salvo em `data/cotacoes.csv`.
+
+Para abrir o dashboard interativo:
+
+```bash
+streamlit run dashboard.py
+``` Depois, abra o `analise.ipynb` no Jupyter ou no VS Code e execute todas as células.
 
 ## 📁 Estrutura do projeto
 
@@ -60,6 +71,7 @@ analise-cambio/
 ├── data/
 │   └── cotacoes.csv   # dados coletados
 ├── analise.ipynb      # análise exploratória e conclusões
+├── dashboard.py       # dashboard interativo em Streamlit
 ├── requirements.txt   # dependências do projeto
 └── README.md
 ```
@@ -71,7 +83,7 @@ analise-cambio/
 - [x] Análise exploratória
 - [x] Visualizações
 - [x] Conclusões
-- [ ] Dashboard interativo *(próxima etapa)*
+- [x] Dashboard interativo
 
 ## 💡 Principais conclusões
 
