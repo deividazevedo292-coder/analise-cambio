@@ -8,6 +8,8 @@ Projeto de análise de dados que coleta, trata e analisa o histórico de cotaç�
 
 ## 📊 Dashboard
 
+🔗 **[Abrir o dashboard online](https://dashboard-cambio-deivid.streamlit.app)**
+
 O projeto tem um dashboard interativo em Streamlit, com filtros por moeda e período, indicadores, gráficos de evolução, volatilidade, pandemia e sazonalidade, e um conversor com a última cotação.
 
 ## 🎯 Objetivo
