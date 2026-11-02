@@ -11,6 +11,8 @@ Projeto de análise de dados que **coleta, trata e analisa** quase 3 mil dias de
 
 ### 🔗 [Abrir o dashboard online](https://dashboard-cambio-deivid.streamlit.app)
 
+[![Dashboard de Análise de Câmbio](dashboard.png)](https://dashboard-cambio-deivid.streamlit.app)
+
 ---
 
 ## 💡 Principais resultados
