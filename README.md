@@ -1,25 +1,41 @@
 # 📈 Análise de Câmbio: o Real frente a outras moedas (2015–2026)
 
-Projeto de análise de dados que coleta, trata e analisa o histórico de cotações do Real brasileiro em relação a quatro moedas, usando dados oficiais do **Banco Central do Brasil**.
+![Python](https://img.shields.io/badge/Python-3-3776AB?logo=python&logoColor=white)
+![pandas](https://img.shields.io/badge/pandas-150458?logo=pandas&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?logo=streamlit&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?logo=jupyter&logoColor=white)
 
-> Projeto complementar ao [Banco Multimoedas](https://github.com/deividazevedo292-coder/banco-multimoedas), meu sistema de conversão de moedas em Python. Lá eu converto valores; aqui eu analiso como essas moedas se comportaram ao longo dos anos.
+Projeto de análise de dados que **coleta, trata e analisa** quase 3 mil dias de cotações do Real brasileiro frente a quatro moedas, usando dados oficiais do **Banco Central do Brasil**.
+
+> Projeto complementar ao [Banco Multimoedas](https://github.com/deividazevedo292-coder/banco-multimoedas), meu sistema bancário em Python com PostgreSQL. Lá eu converto valores; aqui eu analiso como essas moedas se comportaram ao longo dos anos.
+
+### 🔗 [Abrir o dashboard online](https://dashboard-cambio-deivid.streamlit.app)
+
+---
+
+## 💡 Principais resultados
+
+| Pergunta | Resposta |
+| --- | --- |
+| Qual moeda mais se valorizou frente ao Real desde 2015? | **Dólar: +101%** (de R$ 2,69 para cerca de R$ 5,42). Depois: euro +87%, libra +75%, iene +54% |
+| Qual moeda foi a mais volátil? | Todas parecidas, **cerca de 15% ao ano**, com o iene levemente acima. Os anos mais instáveis foram 2015 e 2020 |
+| Como o Real reagiu à pandemia? | O dólar foi de R$ 4,50 (fim de fev/2020) para **R$ 5,94 em 14/05/2020: alta de 32% em menos de 3 meses** |
+| Existe um "mês certo" para comprar dólar? | **Não.** Agosto parece subir mais (+3% em média), mas a média é puxada por 3 anos atípicos. Com 11 anos de dados, não há padrão confiável |
+
+**Em resumo:** entre 2015 e 2026 o Real perdeu valor frente a todas as moedas analisadas, e a instabilidade do câmbio se concentrou em momentos de crise.
 
 ---
 
 ## 📊 Dashboard
 
-🔗 **[Abrir o dashboard online](https://dashboard-cambio-deivid.streamlit.app)**
+O dashboard interativo em Streamlit tem:
 
-O projeto tem um dashboard interativo em Streamlit, com filtros por moeda e período, indicadores, gráficos de evolução, volatilidade, pandemia e sazonalidade, e um conversor com a última cotação.
+- Filtros por moeda e período
+- Indicadores principais
+- Gráficos de evolução, volatilidade, pandemia e sazonalidade
+- Conversor com a última cotação disponível
 
-## 🎯 Objetivo
-
-Entender o comportamento do câmbio no Brasil nos últimos dez anos e responder perguntas como:
-
-- Qual moeda mais se valorizou frente ao Real desde 2015?
-- Qual moeda foi a mais volátil?
-- Como o Real reagiu a momentos de crise, como a pandemia de 2020?
-- Existe algum padrão sazonal, como meses em que o dólar costuma estar mais barato?
+---
 
 ## 🗂️ Dados
 
@@ -34,36 +50,35 @@ Entender o comportamento do câmbio no Brasil nos últimos dez anos e responder 
 - **Período:** janeiro de 2015 até a data da coleta
 - **Frequência:** diária (dias úteis)
 - **Valor:** cotação de venda, em reais
-- **Observação:** o peso argentino chegou a ser incluído, mas a validação dos dados mostrou que a série usada (21637) não era a cotação diária da moeda, e sim um indicador mensal. Por isso ele foi retirado da análise.
 
-A API limita consultas de séries diárias a janelas de no máximo 10 anos, então o script de coleta busca os dados em blocos de 3 anos e junta tudo ao final.
+---
 
-## 🛠️ Tecnologias
+## 🔍 Como a análise foi feita
 
-- Python
-- pandas
-- requests
-- matplotlib
-- Streamlit
-- Jupyter Notebook
+- **Coleta em blocos:** a API limita séries diárias a janelas de no máximo 10 anos, então o `coleta.py` busca os dados em blocos de 3 anos e junta tudo no final
+- **Tratamento sem inventar dados:** feriados e dias sem cotação ficam de fora; cada moeda é analisada só com os dias em que tem dados
+- **Base 100:** como o iene vale centavos e a libra mais de R$ 7, todas as moedas são comparadas a partir do mesmo ponto inicial
+- **Volatilidade anualizada:** desvio padrão das variações diárias, multiplicado pela raiz de 252 (dias úteis no ano)
+- **Validação dos dados:** o peso argentino chegou a ser incluído, mas a checagem mostrou que a série usada (21637) era um indicador mensal, e não a cotação diária. Por isso ele foi retirado da análise
+
+---
 
 ## ▶️ Como executar
 
 ```bash
-# instalar as dependências
+# 1. instalar as dependências
 pip install -r requirements.txt
 
-# coletar os dados
+# 2. coletar os dados (salva em data/cotacoes.csv)
 python coleta.py
+
+# 3. abrir o dashboard interativo
+streamlit run dashboard.py
 ```
 
-O resultado é salvo em `data/cotacoes.csv`.
+Para ver a análise completa, abra o `analise.ipynb` no Jupyter ou no VS Code e execute todas as células.
 
-Para abrir o dashboard interativo:
-
-```bash
-streamlit run dashboard.py
-``` Depois, abra o `analise.ipynb` no Jupyter ou no VS Code e execute todas as células.
+---
 
 ## 📁 Estrutura do projeto
 
@@ -78,6 +93,19 @@ analise-cambio/
 └── README.md
 ```
 
+---
+
+## 🛠️ Tecnologias
+
+- Python
+- pandas
+- requests
+- matplotlib
+- Streamlit
+- Jupyter Notebook
+
+---
+
 ## 🚧 Status
 
 - [x] Coleta automatizada dos dados via API
@@ -87,13 +115,11 @@ analise-cambio/
 - [x] Conclusões
 - [x] Dashboard interativo
 
-## 💡 Principais conclusões
-
-Entre 2015 e 2026, o Real perdeu valor frente a todas as moedas analisadas, com o dólar dobrando de preço. A instabilidade do câmbio se concentrou em momentos de crise, como 2015 e a pandemia de 2020, quando o dólar subiu 32% em menos de três meses. Já a ideia de que existe um “mês certo” para comprar dólar não se sustenta: a aparente sazonalidade é explicada por poucos anos atípicos. Durante o projeto, a validação dos dados também mostrou que uma das séries inicialmente usadas não correspondia ao peso argentino, e ela foi retirada da análise.
+---
 
 ## 👤 Autor
 
-**Deivid Azevedo Dantas**
-Estudante de Análise e Desenvolvimento de Sistemas no Centro Universitário FMU
+**Deivid Azevedo Dantas** — estudante de Análise e Desenvolvimento de Sistemas no Centro Universitário FMU
 
-[LinkedIn](https://www.linkedin.com/in/deivid-azevedo-4b5709344/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/deivid-azevedo-4b5709344/)
+[![Portfólio](https://img.shields.io/badge/Portfólio-000000?logo=githubpages&logoColor=white)](https://silvaxzy.github.io/)
